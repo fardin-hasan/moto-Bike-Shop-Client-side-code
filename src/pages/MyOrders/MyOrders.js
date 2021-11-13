@@ -18,6 +18,24 @@ const MyOrders = () => {
             .then(res => res.json())
             .then(data => setOrders(data));
     }, [])
+
+
+    const handleDelete = id => {
+        const url = `https://hidden-bayou-70618.herokuapp.com/purchase/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    alert('deleted')
+                    const remaingProducts = orders.filter(order => order._id !== id);
+                    setOrders(remaingProducts)
+                }
+            })
+
+
+    }
     return (
         <div>
             <h1>my orders </h1>
@@ -26,8 +44,8 @@ const MyOrders = () => {
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
-                            <TableCell align="right">Price</TableCell>
-                            <TableCell align="right">Engine</TableCell>
+                            <TableCell align="right">Phone Number</TableCell>
+                            <TableCell align="right">City</TableCell>
 
                             <TableCell align="right">Action</TableCell>
                         </TableRow>
@@ -41,10 +59,10 @@ const MyOrders = () => {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.price}</TableCell>
-                                <TableCell align="right">{row.engine}</TableCell>
+                                <TableCell align="right">{row.phoneNumber}</TableCell>
+                                <TableCell align="right">{row.city}</TableCell>
 
-                                <TableCell align="right"><Button variant="contained"></Button>Delete</TableCell>
+                                <TableCell align="right"><Button onClick={() => handleDelete(row._id)} variant="contained">Delete</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

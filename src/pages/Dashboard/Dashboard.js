@@ -151,7 +151,7 @@ function Dashboard(props) {
 
                     <Switch>
                         <Route exact path={path}>
-                            <DashboaedHome></DashboaedHome>
+
                             <AllProducts></AllProducts>
                         </Route>
                         <Route path={`${path}/review`}>
