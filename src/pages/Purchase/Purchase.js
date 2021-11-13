@@ -11,7 +11,7 @@ const Purchase = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const url = `http://localhost:5000/purchase/${id}`
+        const url = `https://hidden-bayou-70618.herokuapp.com/purchase/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setPurchase(data))
@@ -33,7 +33,7 @@ const Purchase = () => {
 
         }
 
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://hidden-bayou-70618.herokuapp.com/purchase', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -19,9 +19,12 @@ const Navigation = () => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left' }}>
                         <NavLink style={{ color: 'white', textDecoration: 'none' }} to='/'>Hero Moto Shop</NavLink >
                     </Typography>
-                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/review'><Button color="inherit">Review</Button></NavLink>
+
                     {user?.email ?
-                        <Button style={{ textDecoration: 'none', color: 'white' }} onClick={logOut}>Logout</Button>
+                        <Box>
+                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/dashboard'><Button style={{ textDecoration: 'none', color: 'white' }} >Dashboard</Button></NavLink>
+                            <Button style={{ textDecoration: 'none', color: 'white' }} onClick={logOut}>Logout</Button>
+                        </Box>
                         :
                         <NavLink style={{ textDecoration: 'none', color: 'white' }} to='/login'><Button color="inherit">Login</Button></NavLink>
 

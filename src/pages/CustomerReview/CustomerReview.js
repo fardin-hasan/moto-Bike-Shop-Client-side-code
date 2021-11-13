@@ -13,15 +13,15 @@ const CustomerReview = () => {
         const newReview = { ...review };
         newReview[field] = value;
         setReview(newReview);
-        console.log(newReview)
+
     }
     const handleReview = e => {
-        e.preventDefault()
+
         const reivews = {
             ...review
         }
 
-        fetch('http://localhost:5000/customerReview', {
+        fetch('https://hidden-bayou-70618.herokuapp.com/customerReview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,18 +31,14 @@ const CustomerReview = () => {
             .then(res => res.json)
             .then(data => {
 
-
-
-
-
             })
 
-
+        e.preventDefault()
 
     }
     return (
-        <Box sx={{ my: 5 }}>
-            <Typography sx={{ my: 5, textAlign: 'center' }} variant="h4" gutterBottom>
+        <Box sx={{ my: 1 }}>
+            <Typography sx={{ my: 1, textAlign: 'center' }} variant="h4" gutterBottom>
                 Give Us Your Feedback Below
             </Typography>
             <Grid sx={{ my: 5 }} container spacing={2}>
@@ -56,7 +52,7 @@ const CustomerReview = () => {
                             type='text'
                             onChange={handleOnchange}
                             required
-                            defaultValue={user.displayName}
+
                             label="Your Name"
                             variant="standard" />
                         <TextField

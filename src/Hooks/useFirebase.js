@@ -8,8 +8,15 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
 
+
+    useEffect(() => {
+        fetch(`https://hidden-bayou-70618.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
     // register
     const registerUser = (email, password, history, name) => {
         setIsLoading(true);
@@ -20,6 +27,7 @@ const useFirebase = () => {
                 setError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
+                saveUser(email, name, 'POST');
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -70,6 +78,19 @@ const useFirebase = () => {
         });
     }
 
+    // save user
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://hidden-bayou-70618.herokuapp.com/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
 
     // observe user
     useEffect(() => {
@@ -89,6 +110,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         registerUser,
         logOut,
         loginUser,

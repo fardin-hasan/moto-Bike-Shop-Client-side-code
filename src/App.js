@@ -12,6 +12,9 @@ import AllProducts from './pages/AllProducts/AllProducts';
 import Footer from './Shared/Footer/Footer';
 import Review from './pages/Home/Review/Review';
 import CustomerReview from './pages/CustomerReview/CustomerReview';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Pay from './pages/Pay/Pay';
+import MyOrders from './pages/MyOrders/MyOrders';
 
 
 
@@ -40,6 +43,15 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path='/review'>
             <CustomerReview></CustomerReview>
+          </PrivateRoute>
+          <PrivateRoute path='/dashboard'>
+            <Dashboard></Dashboard>
+          </PrivateRoute>
+          <PrivateRoute path='/pay'>
+            <Pay></Pay>
+          </PrivateRoute>
+          <PrivateRoute path='/myOrders'>
+            <MyOrders></MyOrders>
           </PrivateRoute>
         </Switch>
         <Footer></Footer>
