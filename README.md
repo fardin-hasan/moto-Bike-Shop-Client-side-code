@@ -1,6 +1,6 @@
 # Hero Moto Shop
 
-The live site [link](https://github.com/facebook/create-react-app).
+The live site [link](https://moto-bike-shop.web.app).
 
 * this project is about a moto bike shop.
 * i have user material ui in this project.
